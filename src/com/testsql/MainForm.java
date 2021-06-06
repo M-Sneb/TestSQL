@@ -27,7 +27,6 @@ public class MainForm extends JFrame {
 
                     JOptionPane.showMessageDialog(null, "Подключение выполнено", "TestSQL", JOptionPane.PLAIN_MESSAGE);
                 } catch (Exception exception) {
-                    System.out.println(exception);
                     JOptionPane.showMessageDialog(null, "Подключение не выполнено", "TestSQL", JOptionPane.PLAIN_MESSAGE);
                 }
             }
