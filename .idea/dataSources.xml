@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="TestSQL@127.0.0.1" uuid="ffba5d99-b945-4389-9c53-e4d7af9c4bb9">
+    <data-source source="LOCAL" name="@127.0.0.1" uuid="59b7fb30-4d25-48e0-b67c-575288c2b25a">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://127.0.0.1\SQLEXPRESS:1433;database=TestSQL</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://127.0.0.1</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="@127.0.0.1" uuid="cac7e3f9-2819-49d3-a827-e1194e3828c1">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://127.0.0.1\SQLEXPRESS:1433;database=OdcManage</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MainForm extends JFrame {
     private JTextField tfConnString1;
@@ -36,7 +37,7 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String strConnection1 = tfConnString1.getText();
                 String strConnection2 = tfConnString2.getText();
-                try  {
+                try {
                     con1 = DriverManager.getConnection(strConnection1);
                     con2 = DriverManager.getConnection(strConnection2);
                     JOptionPane.showMessageDialog(null, "Подключение выполнено", "TestSQL", JOptionPane.PLAIN_MESSAGE);
@@ -50,33 +51,38 @@ public class MainForm extends JFrame {
         btnGenerate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Patient> patients = new ArrayList();
+                ArrayList<Patient> patients1 = new ArrayList();
+                ArrayList<Patient> patients2 = new ArrayList();
+
                 int db2Writen = 0;
-                for (int n = 0; n <= Integer.parseInt(tfQantity.getText()); n += 100) {
-                    for (int i = 0; i < 100; i++) {
-                        patients.add(new Patient(true));
+                for (int n = 0; n <= Integer.parseInt(tfQantity.getText()); n++) {
+                    Patient patient = new Patient(true);
+                    Patient patient2;
+                    patients1.add(patient);
+                    if (Math.random() <= Double.parseDouble(tfIntersection.getText())) {
+                        patient2 = new Patient(patient);
+                        patient2.setId(UUID.randomUUID().toString());
+                        patients2.add(patient2);
+                        db2Writen++;
                     }
+                }
                     if (pDao1 != null && pDao2 != null) {
                         try {
-                            pDao1.add(patients);
-                            if (Math.random() <= Double.parseDouble(tfIntersection.getText())) {
-                                pDao2.add(patients);
-                                db2Writen += 100;
-                            }
-                            patients.clear();
+                            pDao1.add(patients1);
+                            pDao2.add(patients2);
+                            patients1.clear();
+                            patients2.clear();
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }
                     }
-                }
-                for (int n = 0; n <= Integer.parseInt(tfQantity.getText()) - db2Writen; n += 100) {
-                    for (int i = 0; i < 100; i++) {
-                        patients.add(new Patient(true));
-                    }
+
+                for (int n = 0; n <= Integer.parseInt(tfQantity.getText()) - db2Writen; n++) {
+                    patients2.add(new Patient(true));
                     if (pDao2 != null) {
                         try {
-                            pDao2.add(patients);
-                            patients.clear();
+                            pDao2.add(patients2);
+                            patients2.clear();
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }
