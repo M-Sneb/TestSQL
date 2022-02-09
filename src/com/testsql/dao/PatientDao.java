@@ -27,7 +27,7 @@ public class PatientDao {
                 patientStatement.setString(2, p.getFam());
                 patientStatement.setString(3, p.getIm());
                 patientStatement.setString(4, p.getOtch());
-                patientStatement.setString(5, p.getBirthdate().toString());
+                patientStatement.setString(5, p.getBirthdate().toString() + "T00:00:00");
                 patientStatement.setString(6, p.getPol().toString());
                 patientStatement.setString(7, p.getPassport());
                 patientStatement.addBatch();

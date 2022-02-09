@@ -44,7 +44,7 @@ public class MainForm extends JFrame {
                     pDao1 = new PatientDao(con1);
                     pDao2 = new PatientDao(con2);
                 } catch (SQLException exception) {
-                    JOptionPane.showMessageDialog(null, "Подключение не выполнено", "TestSQL", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Подключение не выполнено: " + exception.getMessage(), "TestSQL", JOptionPane.PLAIN_MESSAGE);
                 }
             }
         });
@@ -66,16 +66,16 @@ public class MainForm extends JFrame {
                         db2Writen++;
                     }
                 }
-                    if (pDao1 != null && pDao2 != null) {
-                        try {
-                            pDao1.add(patients1);
-                            pDao2.add(patients2);
-                            patients1.clear();
-                            patients2.clear();
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
-                        }
+                if (pDao1 != null && pDao2 != null) {
+                    try {
+                        pDao1.add(patients1);
+                        pDao2.add(patients2);
+                        patients1.clear();
+                        patients2.clear();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
                     }
+                }
 
                 for (int n = 0; n <= Integer.parseInt(tfQantity.getText()) - db2Writen; n++) {
                     patients2.add(new Patient(true));
@@ -151,4 +151,8 @@ public class MainForm extends JFrame {
         return mainPanel;
     }
 
+    private class GridConstraints {
+        public GridConstraints(int i, int i1, int i2, int i3, Object p4, Object p5, Object p6, Object p7, Object o, Dimension dimension, Object o1, int i4, boolean b) {
+        }
+    }
 }

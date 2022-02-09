@@ -3,6 +3,7 @@ package com.testsql.model;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -111,11 +112,11 @@ public class Patient {
 
     public static void setDict(){
         try {
-            maleSurnames = new ArrayList(Files.readAllLines(Path.of("resources/MaleSurnames.txt"), StandardCharsets.UTF_8));
-            maleNames = new ArrayList(Files.readAllLines(Path.of("resources/MaleNames.txt"), StandardCharsets.UTF_8));
-            maleFathernames = new ArrayList(Files.readAllLines(Path.of("resources/MaleFathernames.txt"), StandardCharsets.UTF_8));
-            femaleNames = new ArrayList(Files.readAllLines(Path.of("resources/FemaleNames.txt"), StandardCharsets.UTF_8));
-            femaleFathernames = new ArrayList(Files.readAllLines(Path.of("resources/FemaleFathernames.txt"), StandardCharsets.UTF_8));
+            maleSurnames = new ArrayList(Files.readAllLines(Paths.get("resources/MaleSurnames.txt"), StandardCharsets.UTF_8));
+            maleNames = new ArrayList(Files.readAllLines(Paths.get("resources/MaleNames.txt"), StandardCharsets.UTF_8));
+            maleFathernames = new ArrayList(Files.readAllLines(Paths.get("resources/MaleFathernames.txt"), StandardCharsets.UTF_8));
+            femaleNames = new ArrayList(Files.readAllLines(Paths.get("resources/FemaleNames.txt"), StandardCharsets.UTF_8));
+            femaleFathernames = new ArrayList(Files.readAllLines(Paths.get("resources/FemaleFathernames.txt"), StandardCharsets.UTF_8));
         }
         catch (Exception e){}
         if(maleSurnames != null){
